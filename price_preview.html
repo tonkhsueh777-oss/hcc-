@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>企业动画服务价目表（预览）</title>
+  <style>
+    :root{
+      --bg:#0b0f17;
+      --panel:#111827;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --line:#243244;
+      --accent:#60a5fa;
+      --good:#34d399;
+      --warn:#fbbf24;
+      --bad:#fb7185;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      background:radial-gradient(1200px 800px at 20% 10%, rgba(96,165,250,.15), transparent 60%),
+                 radial-gradient(900px 700px at 80% 20%, rgba(52,211,153,.10), transparent 55%),
+                 var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding:28px 18px 44px;
+    }
+    header{
+      padding:18px 16px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      backdrop-filter: blur(6px);
+    }
+    h1{
+      margin:0 0 8px;
+      font-size:22px;
+      letter-spacing:.2px;
+    }
+    .note{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .tabs{
+      display:flex;
+      gap:10px;
+      margin:16px 0 0;
+      flex-wrap:wrap;
+    }
+    .tab{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      color:var(--text);
+      padding:8px 12px;
+      border-radius:999px;
+      cursor:pointer;
+      font-size:13px;
+      user-select:none;
+    }
+    .tab[aria-selected="true"]{
+      border-color:rgba(96,165,250,.65);
+      box-shadow:0 0 0 3px rgba(96,165,250,.12) inset;
+      color:#dbeafe;
+    }
+    section{
+      margin-top:18px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:rgba(17,24,39,.55);
+      overflow:hidden;
+    }
+    .sec-h{
+      padding:14px 16px;
+      border-bottom:1px solid var(--line);
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .sec-h h2{
+      margin:0;
+      font-size:16px;
+    }
+    .sec-h .meta{
+      color:var(--muted);
+      font-size:12px;
+      font-family:var(--mono);
+    }
+    .table-wrap{
+      overflow:auto;
+      max-width:100%;
+    }
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      min-width:900px;
+    }
+    thead th{
+      position:sticky;
+      top:0;
+      background:rgba(17,24,39,.92);
+      backdrop-filter: blur(6px);
+      z-index:1;
+      font-size:12px;
+      letter-spacing:.2px;
+      color:#c7d2fe;
+      text-transform:none;
+      border-bottom:1px solid var(--line);
+      padding:12px 10px;
+      text-align:left;
+      white-space:nowrap;
+    }
+    tbody td{
+      padding:12px 10px;
+      border-bottom:1px solid rgba(36,50,68,.75);
+      vertical-align:top;
+      font-size:13px;
+      color:var(--text);
+    }
+    tbody tr:hover td{ background:rgba(255,255,255,.02); }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:2px 8px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      font-size:12px;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+    .pill.good{ border-color:rgba(52,211,153,.35); color:#bbf7d0; }
+    .pill.warn{ border-color:rgba(251,191,36,.35); color:#fde68a; }
+    .pill.bad{ border-color:rgba(251,113,133,.35); color:#fecdd3; }
+    .price{
+      font-family:var(--mono);
+      font-size:13px;
+      color:#e0f2fe;
+      white-space:nowrap;
+    }
+    .foot{
+      padding:14px 16px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+      padding:14px 16px;
+    }
+    ul{ margin:0; padding-left:18px; }
+    li{ margin:6px 0; }
+    .hide{ display:none; }
+    .small{ font-size:12px; color:var(--muted); }
+    @media (max-width:700px){
+      h1{ font-size:20px; }
+      .sec-h{ align-items:flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>企业动画服务价目表（网页预览）</h1>
+      <p class="note">参考行情区间，用于对外明码标价/起价说明；最终以脚本、镜头复杂度、资产数量与交付规格核算。</p>
+      <div class="tabs" role="tablist" aria-label="筛选">
+        <div class="tab" role="tab" tabindex="0" aria-selected="true" data-target="all">全部</div>
+        <div class="tab" role="tab" tabindex="-1" aria-selected="false" data-target="sec2d">只看 2D</div>
+        <div class="tab" role="tab" tabindex="-1" aria-selected="false" data-target="sec3d">只看 3D</div>
+        <div class="tab" role="tab" tabindex="-1" aria-selected="false" data-target="secadd">只看增项</div>
+      </div>
+    </header>
+
+    <section id="sec2d">
+      <div class="sec-h">
+        <h2>一、2D 动画（按分钟计价）</h2>
+        <div class="meta">单位：RMB / 分钟</div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>类别</th>
+              <th>档位</th>
+              <th>计价方式</th>
+              <th>价格区间</th>
+              <th>适用场景</th>
+              <th>默认包含（建议写进合同）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2D MG 信息图</td>
+              <td><span class="pill good">入门</span> 模板/轻定制</td>
+              <td>元/分钟</td>
+              <td class="price">6,000–9,000</td>
+              <td>企业介绍、流程说明、简单宣传短片</td>
+              <td>图形动效为主；少量 icon；基础转场；含 2 轮修改</td>
+            </tr>
+            <tr>
+              <td>2D MG 信息图</td>
+              <td><span class="pill warn">标准（主推）</span> 定制型</td>
+              <td>元/分钟</td>
+              <td class="price">10,000–18,000</td>
+              <td>产品卖点解释、投放短片、品牌信息传达</td>
+              <td>镜头更多；节奏更强；动效更丰富；含 2–3 轮修改</td>
+            </tr>
+            <tr>
+              <td>2D MG 信息图</td>
+              <td><span class="pill bad">高级</span> 高动效/强审美</td>
+              <td>元/分钟</td>
+              <td class="price">20,000–40,000+</td>
+              <td>发布会预热视频、品牌片、内容密度高项目</td>
+              <td>复杂转场/合成；更强画面设计；可含简易角色；含 3 轮修改</td>
+            </tr>
+            <tr>
+              <td>2D 逐帧角色动画</td>
+              <td><span class="pill warn">标准</span> 角色表演</td>
+              <td>元/分钟</td>
+              <td class="price">30,000–60,000</td>
+              <td>角色剧情、对白口型、拟人表演</td>
+              <td>关键帧密度高；修型；可含口型；含 2 轮修改</td>
+            </tr>
+            <tr>
+              <td>2D 逐帧角色动画</td>
+              <td><span class="pill bad">高端</span> 高要求演出</td>
+              <td>元/分钟</td>
+              <td class="price">60,000+</td>
+              <td>高难度动作戏、强表演/高质量输出</td>
+              <td>更严修型与表演；更强合成；含 2–3 轮修改</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="foot small">提示：2D MG 通常以“镜头数、信息密度、转场复杂度、是否原创插画/角色”决定落在区间哪一段。</div>
+    </section>
+
+    <section id="sec3d">
+      <div class="sec-h">
+        <h2>二、3D 动画（按秒计价）</h2>
+        <div class="meta">单位：RMB / 秒</div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>类别</th>
+              <th>档位</th>
+              <th>计价方式</th>
+              <th>价格区间</th>
+              <th>适用场景</th>
+              <th>默认包含（建议写进合同）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>3D 产品/工业演示</td>
+              <td><span class="pill good">基础</span></td>
+              <td>元/秒</td>
+              <td class="price">300–800</td>
+              <td>结构展示、流程演示、简单镜头</td>
+              <td>基础材质灯光；少特效；镜头运动少；含 2 轮修改</td>
+            </tr>
+            <tr>
+              <td>3D 产品宣传（拆解/装配）</td>
+              <td><span class="pill warn">标准（主推）</span></td>
+              <td>元/秒</td>
+              <td class="price">800–2,000</td>
+              <td>卖点宣传、拆解装配、参数可视化</td>
+              <td>精细材质；拆解/装配；更多镜头；基础合成；含 2–3 轮修改</td>
+            </tr>
+            <tr>
+              <td>3D 高质感发布会级</td>
+              <td><span class="pill bad">高端</span></td>
+              <td>元/秒</td>
+              <td class="price">2,000–4,000+</td>
+              <td>发布会、广告级、强氛围镜头</td>
+              <td>高写实灯光材质；复杂镜头语言；调色合成；含 2 轮修改</td>
+            </tr>
+            <tr>
+              <td>3D 角色/拟人表演</td>
+              <td><span class="pill bad">高端（单独评估）</span></td>
+              <td>元/秒</td>
+              <td class="price">3,000–6,000+</td>
+              <td>口型、表情、布料毛发、复杂绑定</td>
+              <td>绑定/表情/口型/布料毛发显著增项；建议按镜头评估</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="foot small">提示：3D 价格最受“建模来源（是否有 CAD/现成模型）+ 材质灯光写实度 + 特效 + 渲染规格”影响。</div>
+    </section>
+
+    <section id="secadd">
+      <div class="sec-h">
+        <h2>三、增项与规则（建议单列）</h2>
+        <div class="meta">用于锁定范围，避免亏损</div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>分类</th>
+              <th>项目</th>
+              <th>建议加价方式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>前期策划</td>
+              <td>脚本代写/文案梳理</td>
+              <td class="price">+1,000–8,000 / 项</td>
+              <td>内容复杂度越高越靠上</td>
+            </tr>
+            <tr>
+              <td>前期策划</td>
+              <td>分镜/Animatic</td>
+              <td class="price">+3,000–20,000 / 项（按镜头数）</td>
+              <td>确认分镜后进入制作</td>
+            </tr>
+            <tr>
+              <td>资产制作</td>
+              <td>2D 角色设定（1 套）</td>
+              <td class="price">+1,500–8,000 / 套</td>
+              <td>含正侧背/表情规范（可选）</td>
+            </tr>
+            <tr>
+              <td>资产制作</td>
+              <td>3D 建模（从零建模）</td>
+              <td>按资产报价或按工时</td>
+              <td>提供 CAD/现成模型可显著降价</td>
+            </tr>
+            <tr>
+              <td>特效合成</td>
+              <td>粒子/烟火/流体/破碎/布料毛发</td>
+              <td class="price">按镜头加价 或 总价上浮 +20%–100%</td>
+              <td>按复杂程度评估</td>
+            </tr>
+            <tr>
+              <td>交付规格</td>
+              <td>4K / 多版本导出（横竖屏/多语言）</td>
+              <td class="price">+10%–30% 或 按版本计费</td>
+              <td>版本越多成本越高</td>
+            </tr>
+            <tr>
+              <td>商务条款</td>
+              <td>加急</td>
+              <td class="price">+20% / +30% / +50%</td>
+              <td>按档期压缩程度</td>
+            </tr>
+            <tr>
+              <td>商务条款</td>
+              <td>超出修改轮次</td>
+              <td class="price">+300–1,200 / 次（或按工时）</td>
+              <td>建议默认含 2–3 轮修改</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid">
+        <div>
+          <strong>默认交付基准（建议固定写死）</strong>
+          <ul>
+            <li>默认交付：1080p，25/30fps，mp4</li>
+            <li>默认含修改：2–3 轮（每轮为一次集中反馈）</li>
+            <li>默认不含：脚本代写、分镜、配音/音乐版权、从零 3D 建模、复杂特效、4K、多语言多版本</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <p class="foot">如需把此页面改成“可输入时长自动算价”的报价器，可在此基础上加一个计算模块（按档位单价 × 时长 + 增项）。</p>
+  </div>
+
+  <script>
+    const tabs = [...document.querySelectorAll('.tab')];
+    const sections = {
+      all: ['sec2d','sec3d','secadd'],
+      sec2d: ['sec2d'],
+      sec3d: ['sec3d'],
+      secadd: ['secadd']
+    };
+
+    function selectTab(target){
+      tabs.forEach(t=>{
+        const isSel = t.dataset.target === target;
+        t.setAttribute('aria-selected', String(isSel));
+        t.tabIndex = isSel ? 0 : -1;
+      });
+      // show/hide
+      document.getElementById('sec2d').classList.toggle('hide', !sections[target].includes('sec2d'));
+      document.getElementById('sec3d').classList.toggle('hide', !sections[target].includes('sec3d'));
+      document.getElementById('secadd').classList.toggle('hide', !sections[target].includes('secadd'));
+      // scroll to top-ish
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    tabs.forEach(t=>{
+      t.addEventListener('click', ()=>selectTab(t.dataset.target));
+      t.addEventListener('keydown', (e)=>{
+        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); selectTab(t.dataset.target); }
+      });
+    });
+  </script>
+</body>
+</html>
